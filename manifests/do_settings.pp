@@ -35,7 +35,7 @@ define sshd::do_settings ($file, $bcontext, $lens, $set_comment=true ) {
                     "set #comment[following-sibling::*[1][label()=\"${base_path}\"]] \"${msg}\"",
                     ],
         onlyif  =>  "match #comment[.=\"${msg}\"] size == 0",
-        require =>  Augeas["Insert ${option} after comment"],
+        require =>  Augeas["Insert ${option} after existing comment"],
       }
     } else {
       augeas { "Remove comment for ${option} in ${file}":

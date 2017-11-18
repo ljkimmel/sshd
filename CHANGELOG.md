@@ -1,3 +1,11 @@
+## Supported Release 0.2.9
+### Summary
+
+Bugfix release only
+
+#### Bugfixes
+- Fixed missing reference between Augeas resources in do_settings.pp.
+
 ## Supported Release 0.2.8
 ### Summary
 
