@@ -1,0 +1,18 @@
+{
+  "CHANGELOG.md": "2c1d0e7317b18cdfe6d35b84d2d34d77",
+  "Gemfile": "dbc1a15e3a264c03878028240cfc5d89",
+  "README.md": "495e61087f5cbfe20a9d8f5e1e4d9f82",
+  "Rakefile": "20b80e526e351a74df2001f504e756d2",
+  "facts.d/ssh_keys.sh": "4e2b3cd8520d561876dc99e503c356dc",
+  "files/sshd_config.default": "0440a9608de01c4fa1c1dd6301b568ec",
+  "manifests/config.pp": "ac6e8fe0f2ae75a890a860032e28465b",
+  "manifests/init.pp": "f568ddcfe0fac913f9719c7f090615c6",
+  "manifests/install.pp": "b90b1d538040942f7c4dfeee4b2818e8",
+  "manifests/params.pp": "35080f47d3a9ad8fc5b68556e0023bcf",
+  "manifests/service.pp": "e36be9fb9aef3943c63579ee459af6ac",
+  "manifests/sshd_settings.pp": "bfd817842e14ff84483401cbb2be9f85",
+  "metadata.json": "de4dc77464e78650839dca4f43eaad3f",
+  "spec/classes/init_spec.rb": "8ece84892531ac99d3d871bfe86d34d5",
+  "spec/spec_helper.rb": "0db89c9a486df193c0e40095422e19dc",
+  "tests/init.pp": "f9d5ee980b8e4361f76e1e73dc5eb3f6"
+}
