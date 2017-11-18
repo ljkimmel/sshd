@@ -163,7 +163,4 @@ Finally, it also takes the `$set_comment` parameter which performs the same func
 
 ## Development
 
-Please submit your ideas to lesley.j.kimmel@gmail.com. I have not yet had the time to 
-get this set up on Github but would like to eventually do so. If you have input or tips
-on doing this please send those as well. If there is interest in this module I would
-love to get it cleaned up for wider distribution.
+Submit issues and pull requests at: https://github.com/ljkimmel/sshd

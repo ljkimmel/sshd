@@ -1,3 +1,8 @@
+## Supported Release 0.2.7
+### Summary
+
+Added license and updated project information.
+
 ## Supported Release 0.2.6
 ### Summary
 
