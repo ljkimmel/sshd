@@ -109,28 +109,6 @@ Dynamically determined list of private keys under /etc/ssh.
 #### `local_ssh_pub_keys`
 Dynamically determined list of public keys under /etc/ssh.
 
-### Examples
-```puppet
-  class class1 () {
-    class { 'sshd':
-      custom_settings => {
-                         'Banner' => '/etc/issue',
-                         'Protocol' => '2',
-                         },
-    }
-  }
-
-  class class2 () {
-    sshd::sshd_settings { 'SSHD Settings required for Class2':
-      settings  =>  {
-                    'Ciphers' => "aes128-ctr,aes192-ctr,aes256-ctr",
-                    'MACs/1' => "hmac-sha2-256",
-                    'MACs/2' => "hmac-sha2-512",
-                    },
-      }
-  }
-```
-
 ### Defined Types
 
 #### `sshd_settings`
@@ -145,6 +123,73 @@ the simple key/value paradigm. It is passed to Augeas as a 'context' so that set
 than directly underneath the 'file'.
 
 Finally, it also takes the `$set_comment` parameter which performs the same function as the class paramter `$set_comments`.
+
+### Examples
+This example shows a basic usage where the sshd class in declared with custom settings and then another class
+uses the defined type (`sshd::sshd_settings`) to add further settings.
+```puppet
+  class class1 () {
+    class { 'sshd':
+      custom_settings => {
+                         'Banner' => '/etc/issue',
+                         'Protocol' => '2',
+                         },
+    }
+  }
+
+  class class2 () {
+    sshd::sshd_settings { 'SSHD Settings required for Class2':
+      settings  =>  {
+                    'Ciphers' => 'aes128-ctr,aes192-ctr,aes256-ctr',
+                    'MACs/1' => 'hmac-sha2-256',
+                    'MACs/2' => 'hmac-sha2-512',
+                    },
+      }
+  }
+```
+
+The defined type was also designed to ignore settings that have a nil/undef value. This is useful in cases where you have
+a base class that applies to all systems and applies a default set of SSHD settings but some systems need to override one 
+or more of those settings for another purpose. Here is an example that uses Hiera (hiera_hash with merging):
+```yaml
+  ---
+  # Base Hiera data
+  class1::sshd_settings:
+    'Banner': '/etc/issue'
+    'Protocol': '2'
+    'GSSAPIAuthentication': 'no'
+```
+
+```yaml
+  ---
+  # Override Hiera data
+  class1::sshd_settings:
+    'GSSAPIAuthentication': ~
+
+  class2::sshd_settings:
+    'GSSAPIAuthentication': 'yes'
+    'Ciphers': 'aes128-ctr,aes192-ctr,aes256-ctr'
+    'MACs/1': 'hmac-sha2-256'
+    'MACs/2': 'hmac-sha2-512'
+```
+
+```puppet
+  class class1 (
+    $sshd_custom_settings  = hiera_hash('class1::sshd_settings'),
+  ) {
+    sshd::sshd_settings { 'Class1 SSHD Settings':
+      settings  =>  $sshd_custom_settings,
+    }
+  }
+
+  class class2 (
+    $sshd_custom_settings  = hiera_hash('class2::sshd_settings'),
+  ) {
+    sshd::sshd_settings { 'Class2 SSHD Settings':
+      settings  =>  $sshd_custom_settings,
+    }
+  }
+```
 
 ## Limitations
 
