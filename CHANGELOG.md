@@ -1,3 +1,13 @@
+## Supported Release 0.2.10
+### Summary
+
+Documentation update only.
+
+### Documentation
+- Added development notes to README.md
+- Added upper bounds for dependencies in metadata.json
+- Fixed typo in license reference in metadata.json
+
 ## Supported Release 0.2.9
 ### Summary
 

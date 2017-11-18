@@ -208,4 +208,7 @@ or more of those settings for another purpose. Here is an example that uses Hier
 
 ## Development
 
-Submit issues and pull requests at: https://github.com/ljkimmel/sshd
+* This is my first public module. I am eager for feedback so that I can improve this module and learn more for 
+  building and releasing future modules. Please submit any feedback (good or bad) and feature requests to the module's
+  GitHub issues page: https://github.com/ljkimmel/sshd/issues
+* Submit issues and pull requests at: https://github.com/ljkimmel/sshd
